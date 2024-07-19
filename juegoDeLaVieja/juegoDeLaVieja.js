@@ -3,12 +3,8 @@ document.addEventListener('DOMContentLoaded', function() {
     var turno = 'X';
     var arrayX = [];
     var arrayO = [];
-    var juegoTermiado =  false;
-    function resetGame() {
-        location.reload();
-    }
+    var juegoEmpatado = false;
     function checkWinner(array, turno) {
-
         const combinacionesGanadoras = [
             ['11', '12', '13'],
             ['21', '22', '23'],
@@ -19,14 +15,12 @@ document.addEventListener('DOMContentLoaded', function() {
             ['11', '22', '33'],
             ['13', '22', '31']
         ];
-
         for (let i = 0; i < combinacionesGanadoras.length; i++) {
             const combinacion = combinacionesGanadoras[i];
             let gano = combinacion.every(pos => array.includes(pos));
             if (gano) {
                 alert(`El ganador es ${turno}`);
-                juegoTermiado = true;
-                resetGame();
+                location.reload();
                 return;
             }
         }
@@ -40,24 +34,35 @@ document.addEventListener('DOMContentLoaded', function() {
                         arrayX.push(celda.dataset.pos);
                         celda.textContent = 'X';
                         celda.style.color = 'white';
-                        checkWinner(arrayX, turno);
-                        turno = 'O';
+                        setTimeout(function() {
+                            checkWinner(arrayX, turno);
+                            turno = 'O';
+                        }, 0);
                     }
                 } else if (turno === 'O') {
                     if (!arrayO.includes(celda.dataset.pos) && !arrayX.includes(celda.dataset.pos)) {
                         arrayO.push(celda.dataset.pos);
                         celda.textContent = 'O';
                         celda.style.color = 'black';
-                        checkWinner(arrayO, turno);
-                        turno = 'X';
+                        setTimeout(function() {
+                            checkWinner(arrayO, turno);
+                            turno = 'X';
+                        }, 0);
                     }
                 }
             }
-            if(arrayO.length == 4 && arrayX.length == 5 && juegoTermiado == false){
-                alert(`empate
-                    `);
-                resetGame()
+            if(arrayO.length == 4 && arrayX.length == 5){
+                juegoEmpatado = true
             }
+            setTimeout(function(){
+                function alertarElEmpate(){
+                    if(juegoEmpatado == true){
+                        alert('empate');
+                        location.reload();
+                    }
+                }
+                alertarElEmpate()
+            } , 0)
         });
     });
 });

@@ -1,0 +1,55 @@
+#reload{
+    background-color: aqua;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    height: 50px;
+    width: 150px;
+    
+}
+#container{
+    background-color: blue;
+    height: 500px;
+    width: 2000px;
+}
+#doll{
+    background-color: red;
+    height: 30px;
+    width: 30px;
+    position:absolute;
+    left: 50px;
+    top: 175px;
+    
+    z-index: 10;
+}
+#floor1{
+    background-color: black;
+    height: 75px;
+    width: 300px;
+    position: absolute;
+    top: 305px; 
+    left: 8px; 
+}
+#floor2{
+    background-color: black;
+    height: 75px;
+    width: 300px;
+    position: absolute;
+    top: 350px; 
+    left: 308px; 
+}#floor3{
+    background-color: black;
+    height: 75px;
+    width: 300px;
+    position: absolute;
+    top: 400px; 
+    left: 608px;
+}
+#floor4{
+    background-color: black;
+    height: 75px;
+    width: 300px;
+    position: absolute;
+    top: 450px; 
+    left: 908px;
+}

@@ -55,19 +55,20 @@ function verifyCrash(){
     if(direction === "right" && floorRight){
         let dollPosition = element.getBoundingClientRect();
         if(dollPosition.right >= floorRight.left && dollPosition.bottom > floorRight.top){
+            console.log("hola")
             let currentPosition = parseInt(style.getPropertyValue("left"));
             currentPosition = currentPosition - 5;
             element.style.left = currentPosition + "px";
             window.requestAnimationFrame(verifyCrash);
         }
     }
-    if(direction === "left" && floorLeft){
+    if (direction === "left") {
         let dollPosition = element.getBoundingClientRect();
-        if(dollPosition.left <= floorLeft.right ){
-            console.log(`floorLeft.right:${floorLeft.right}`)
-            console.log(`                  dollPosition.left:${dollPosition.left}`)
+        console.log(`floorLeft:`, floorLeft ); 
+        if (floorLeft && dollPosition.left <= floorLeft.right && dollPosition.bottom > floorLeft.top && dollPosition.top < floorLeft.bottom) {
+            console.log(`dollPosition.left:${dollPosition.left}, floorLeft.right:${floorLeft.right}`);
             let currentPosition = parseInt(style.getPropertyValue("left"));
-            currentPosition = currentPosition - 5;
+            currentPosition = currentPosition + 5;
             element.style.left = currentPosition + "px";
             window.requestAnimationFrame(verifyCrash);
         }
@@ -81,8 +82,8 @@ function goRight() {
         let currentPosition = parseInt(style.getPropertyValue("left"));
         currentPosition = currentPosition + 5;
         element.style.left = currentPosition + "px";
-        let floor = verifyFloor();
         verifyCrash();
+        let floor = verifyFloor();
         if (dollPosition.bottom < floor && jumping == false){
             fall()
         }
@@ -97,8 +98,8 @@ function goLeft() {
         let currentPosition = parseInt(style.getPropertyValue("left"));
         currentPosition = currentPosition - 5;
         element.style.left = currentPosition + "px";
-        let currentFloor = verifyFloor();
         verifyCrash();
+        let currentFloor = verifyFloor();
 
         if (dollPosition.top < currentFloor &&  jumping == false){
             fall();

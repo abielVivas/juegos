@@ -5,7 +5,7 @@
     left: 10px;
     height: 50px;
     width: 150px;
-    
+    border-radius: 20px;
 }
 #container{
     background-color: blue;
@@ -19,8 +19,8 @@
     position:absolute;
     left: 50px;
     top: 175px;
-    
     z-index: 10;
+    border-radius: 20px;
 }
 #floor1{
     background-color: black;
@@ -29,6 +29,7 @@
     position: absolute;
     top: 305px; 
     left: 8px; 
+    border-radius: 20px;
 }
 #floor2{
     background-color: black;
@@ -37,6 +38,7 @@
     position: absolute;
     top: 350px; 
     left: 308px; 
+    border-radius: 20px;
 }#floor3{
     background-color: black;
     height: 75px;
@@ -44,6 +46,7 @@
     position: absolute;
     top: 300px; 
     left: 608px;
+    border-radius: 20px;
 }
 #floor4{
     background-color: black;
@@ -52,4 +55,5 @@
     position: absolute;
     top: 450px; 
     left: 908px;
+    border-radius: 20px;
 }

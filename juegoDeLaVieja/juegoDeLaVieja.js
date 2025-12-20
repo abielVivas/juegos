@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var arrayX = [];
     var arrayO = [];
     var juegoEmpatado = false;
+    var winner = false;
     function checkWinner(array, turno) {
         const combinacionesGanadoras = [
             ['11', '12', '13'],
@@ -17,10 +18,11 @@ document.addEventListener('DOMContentLoaded', function() {
         ];
         for (let i = 0; i < combinacionesGanadoras.length; i++) {
             const combinacion = combinacionesGanadoras[i];
-            let gano = combinacion.every(pos => array.includes(pos));
-            if (gano) {
+            let win = combinacion.every(pos => array.includes(pos));
+            if (win) {
+                winner = true
                 alert(`El ganador es ${turno}`);
-                location.reload();
+                location.reload(true);
                 return;
             }
         }
@@ -30,25 +32,21 @@ document.addEventListener('DOMContentLoaded', function() {
         celda.addEventListener('click', function() {
             if (celda.textContent === '') {
                 if (turno === 'X') {
-                    if (!arrayX.includes(celda.dataset.pos) && !arrayO.includes(celda.dataset.pos)) {
-                        arrayX.push(celda.dataset.pos);
-                        celda.textContent = 'X';
-                        celda.style.color = 'white';
-                        setTimeout(function() {
-                            checkWinner(arrayX, turno);
-                            turno = 'O';
-                        }, 0);
-                    }
-                } else if (turno === 'O') {
-                    if (!arrayO.includes(celda.dataset.pos) && !arrayX.includes(celda.dataset.pos)) {
-                        arrayO.push(celda.dataset.pos);
-                        celda.textContent = 'O';
-                        celda.style.color = 'black';
-                        setTimeout(function() {
-                            checkWinner(arrayO, turno);
-                            turno = 'X';
-                        }, 0);
-                    }
+                    arrayX.push(celda.dataset.pos);
+                    celda.textContent = 'X';
+                    celda.style.color = 'white';
+                    setTimeout(function() {
+                        checkWinner(arrayX, turno);
+                        turno = 'O';
+                    }, 0);
+                } else {
+                    arrayO.push(celda.dataset.pos);
+                    celda.textContent = 'O';
+                    celda.style.color = 'black';
+                    setTimeout(function() {
+                        checkWinner(arrayO, turno);
+                        turno = 'X';
+                    }, 0);
                 }
             }
             if(arrayO.length == 4 && arrayX.length == 5){
@@ -56,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             setTimeout(function(){
                 function alertarElEmpate(){
-                    if(juegoEmpatado == true){
+                    if(juegoEmpatado == true && winner == false){
                         alert('empate');
                         location.reload();
                     }

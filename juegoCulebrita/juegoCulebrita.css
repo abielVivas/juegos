@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(21, 176, 0);
+  background-color: rgb(223, 255, 225);
   display: flex;
   justify-content: center; 
   align-items: center;     
@@ -7,6 +7,7 @@ body {
   margin: 0;
 }
 #grid {
+  border: 10px solid black;
   display: grid;
   grid-template-columns: repeat(10, 50px);
   grid-template-rows: repeat(10, 50px);

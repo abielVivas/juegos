@@ -1,0 +1,13 @@
+body{
+  background-color: brown;
+}
+#grid {
+  display: grid;
+  grid-template-columns: repeat(10, 50px);
+  grid-template-rows: repeat(10, 50px);
+
+}
+#lugarManzana {
+  width: 100px;
+  height: 100px;
+}

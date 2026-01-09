@@ -1,11 +1,15 @@
-body{
-  background-color: brown;
+body {
+  background-color: rgb(21, 176, 0);
+  display: flex;
+  justify-content: center; 
+  align-items: center;     
+  height: 100vh;
+  margin: 0;
 }
 #grid {
   display: grid;
   grid-template-columns: repeat(10, 50px);
   grid-template-rows: repeat(10, 50px);
-
 }
 #lugarManzana {
   width: 100px;

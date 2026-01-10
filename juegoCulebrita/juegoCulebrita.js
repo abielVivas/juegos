@@ -13,12 +13,15 @@ var culebra = [];
 var manzanas = 1;
 var posicionManzana = Math.floor(Math.random() * 100);
 var fondo = document.getElementsByClassName("casilla");
+function morir(){
+    alert("game over")
+    location.reload()
+}
 
 function chocar(posicion){
     console.log(posicion)
     if(posicion < 0 || posicion > 9){
-        alert("game over")
-        location.reload()
+        morir()
     }
 }
 
@@ -86,7 +89,18 @@ function start() {
             manzanas ++;
         }
     });
-    setTimeout(start, 200);
+    //chocar con ella misma
+    for(i = 0; i < culebra.length; i ++){
+        for(j = 0; j < culebra.length; j ++){
+            if(j == i){
+                j++;
+            }
+            if(culebra[i] == culebra[j]){
+                morir();
+            }
+        }
+    }
+    setTimeout(start, 300);
 }
 document.addEventListener("keydown", function(event){
     if(event.key == " "){

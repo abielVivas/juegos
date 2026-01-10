@@ -86,6 +86,9 @@ function start() {
             lugarManzana.removeAttribute("style")
             div.style.backgroundColor = "green";
             posicionManzana = Math.floor(Math.random() * 100);
+            while(culebra.includes(posicionManzana)){
+                posicionManzana = Math.floor(Math.random() * 100);
+            }
             manzanas ++;
         }
     });

@@ -104,6 +104,7 @@ function start() {
         }
     }
     setTimeout(start, 300);
+    document.getElementById("score").textContent = `Score : ${(manzanas - 1) * 100}`;
 }
 document.addEventListener("keydown", function(event){
     if(event.key == " "){

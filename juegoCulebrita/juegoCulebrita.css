@@ -17,3 +17,13 @@ body {
   width: 100px;
   height: 100px;
 }
+#score{
+  position: absolute;   /* ahora depende del grid */
+  top: 10px;
+  left: 10px;
+  background: black;
+  color: white;
+  padding: 10px;
+  border-radius: 12px;
+  font-size: 1rem;
+}
